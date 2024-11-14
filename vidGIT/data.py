@@ -21,3 +21,7 @@ def hash_object(data):
     with open(f'{GIT_DIR}/objects/{oid}', 'wb') as out: # creates a new file in the objects directory with name = OID, open the specified file in binary write mode
         out.write(data)
     return oid
+
+def get_object(oid):
+    with open(f'{GIT_DIR}/objects/{oid}', 'rb') as f: # open the file corresponding to the OID in binary read mode
+        return f.read()

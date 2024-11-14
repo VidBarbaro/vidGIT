@@ -36,4 +36,4 @@ def hash_object(args):
 
 def cat_file(args):
     sys.stdout.flush() # flush the standard output to ensure buffer is clear
-    sys.stdout.buffer.write(data.get_object(args.object)) # write the content of the object identified by args.object to the standard output in binary mode
+    sys.stdout.buffer.write(data.get_object(args.object, expected=None)) # write the content of the object identified by args.object to the standard output in binary mode

@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 
+from . import base
 from . import data
 
 def main():
@@ -25,6 +26,9 @@ def parse_args():
     cat_file_parser.set_defaults(func=cat_file) # set the default function to call for 'cat_file' command
     cat_file_parser.add_argument('object') # add a positional argument for the object ID
 
+    write_tree_parser = commands.add_parser ('write-tree')
+    write_tree_parser.set_defaults (func=write_tree)
+
     return parser.parse_args() # parse and return the command-line arguments
 
 def init(args):
@@ -37,3 +41,7 @@ def hash_object(args):
 def cat_file(args):
     sys.stdout.flush() # flush the standard output to ensure buffer is clear
     sys.stdout.buffer.write(data.get_object(args.object, expected=None)) # write the content of the object identified by args.object to the standard output in binary mode
+
+def write_tree (args):
+    base.write_tree ()
+    
